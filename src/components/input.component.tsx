@@ -5,11 +5,12 @@ const Input = styled.input`
     background-color: white;
     height: 72px;
     border: 1px solid ${props => props.theme.primary};
-    border-radius: 16px;
+    border-radius: 16px 0 0 16px;
     padding: 0 20px;
     font-size: 20px;
 
     transition: all 0.2s;
+   
 
     &:focus{
         border: 1px solid ${props => props.theme.secondary};

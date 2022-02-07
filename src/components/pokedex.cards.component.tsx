@@ -5,10 +5,11 @@ import { ClipLoader } from 'react-spinners';
 import { Ipokemon } from '@interfaces';
 import { Link } from 'react-router-dom';
 import { url } from 'inspector';
+import { getTypeColor } from '@helpers';
 
 
 
-function Card(props:any) {
+function PokedexCard(props:any) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() =>{
@@ -32,10 +33,25 @@ function Card(props:any) {
     <>
       {isLoading ? <ClipLoader /> : (
         props.data.map((pokemon: Ipokemon, i: string)=> {
+          console.log();
+          
           return(
-                <CardContainer key={i} to={`/details/${pokemon.name}`} style={{backgroundColor: pokemon.color}} >
-                  <img  src={pokemon.image} />
-                  <h1>{pokemon.name}</h1>
+                <CardContainer key={i} to={`/details/${pokemon.pokemon.name}`} style={{backgroundColor: pokemon.color}} >
+                  <img  src={pokemon.pokemon.sprites.front_default} />
+                  <h1>{pokemon.pokemon.name}</h1>
+                  {
+                    pokemon.pokemon.types.map((type, i) => {
+                      return(
+                        <TypeName key={i} style={{backgroundColor: getTypeColor(type.type.name)}}>{type.type.name}</TypeName>
+                      )
+                    })
+                  //   data.pokemon.types.map((type:{type: {name: string}}, i:string) => {
+                  //     return(
+                  //         <TypeName key={i} style={{backgroundColor: getTypeColor(type.type.name)}}>{type.type.name}</TypeName>
+                  //     )
+                      
+                  // })
+                  }
                 </CardContainer>
               )
         })
@@ -44,7 +60,7 @@ function Card(props:any) {
   );
 }
 
-export default Card;
+export default PokedexCard;
 
 const CardContainer = styled(Link)`
 background-color: ${props => props.theme.secondary};
@@ -74,3 +90,14 @@ color: white;
 
 
 `;
+
+
+const TypeName = styled.p`
+    padding: 6px 12px;
+    font-size: 18px;
+    margin-right: 20px;
+    border-radius: 16px;
+    color: white;
+    font-weight: bold;
+    margin-left: 20px;
+`

@@ -8,11 +8,6 @@ query pokemon($name: String!) {
       sprites {
         front_default
       }
-      moves {
-        move {
-          name
-        }
-      }
       types {
         type {
           name
