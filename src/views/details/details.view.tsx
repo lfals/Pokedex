@@ -17,9 +17,11 @@ const Details = () => {
         name: id
     }})
 
-    const favorites = JSON.parse(getItem('@favorites'))
+        // @ts-ignore
+        const favorites = JSON.parse(getItem('@favorites'))
 
     const getIndex = () => {
+        // @ts-ignore
         return favorites.findIndex((favorite):any => favorite.pokemon.id === data.pokemon.id)
     }
 

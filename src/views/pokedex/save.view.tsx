@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Header, PokedexCard } from '@components';
+import {  Header, PokedexCard } from '@components';
 import { getItem } from '@helpers';
-import Skeleton from 'react-loading-skeleton';
-import { PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, RadarChart } from 'recharts'
-import { useQuery } from '@apollo/client';
-import { POKEMON_LIST } from '@query';
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts'
 
 function Pokedex() {
   const [item, setDataItem] = useState([])
@@ -12,10 +9,11 @@ function Pokedex() {
      subject: "",
     A: 1,
   }])
-
+        // @ts-ignore
   const pokeData = JSON.parse(getItem("@favorites"))
 
   useEffect(() => {
+        // @ts-ignore
     treatData(JSON.parse(getItem("@favorites")))
   },[])
 
@@ -23,9 +21,12 @@ function Pokedex() {
     const newData: ((prevState: { subject: string; A: number; }[]) => { subject: string; A: number; }[]) | { A: number; }[] = []
     favorites.map((favorite: { pokemon: { types: any[]; }; }) => {
       favorite.pokemon.types.map((typeArray: { type: { name: any; }; }) => {
-        if(newData.findIndex(findData => findData.subject == typeArray.type.name) == -1){
+        // @ts-ignore
+        if(newData.findIndex((findData) => findData.subject == typeArray.type.name) == -1){
+        // @ts-ignore
           newData.push({subject: typeArray.type.name, A: 1})
         }else{
+        // @ts-ignore
           const index = newData.findIndex(obj => obj.subject == typeArray.type.name)
           newData[index].A = newData[index].A + 1
         }
@@ -33,6 +34,7 @@ function Pokedex() {
         
       })
     } )
+        // @ts-ignore
     setData(newData)   
   }
 

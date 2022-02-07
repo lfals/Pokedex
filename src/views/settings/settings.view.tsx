@@ -10,7 +10,7 @@ const Settings = () => {
 
     console.log(context);
 
-    const changeTheme = (name) => {
+    const changeTheme = (name: object) => {
         context.setTheme(name)
     }
     

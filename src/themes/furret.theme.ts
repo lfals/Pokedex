@@ -1,4 +1,5 @@
-import image from "../assets/furret.png"
+        // @ts-ignore
+        import image from "../assets/furret.png"
 
 
 const furret = {

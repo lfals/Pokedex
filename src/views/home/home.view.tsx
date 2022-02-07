@@ -26,6 +26,7 @@ function Home() {
       }});
 
       useEffect(() => {
+        // @ts-ignore
         window.addEventListener('scroll', handleScroll)
       },[])
 

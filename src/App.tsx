@@ -4,7 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import ThemeContext from './context/theme.contex'
 import mimikyu from './themes/mimikyu.theme'
 import Itheme from './interfaces/theme.interface'
-import { Details, Home, Pokedex, Save, Settings } from '@views';
+import { Details, Home, Pokedex, Settings } from '@views';
 import {Container} from '@components';
 import { ThemeProvider } from 'styled-components';
 import { initial } from '@themes';
@@ -22,6 +22,7 @@ const  App = () => {
     }
 
   return (
+    // @ts-ignore
     <ThemeContext.Provider value={proivider}>
     <ThemeProvider theme={theme}>
     <Container>

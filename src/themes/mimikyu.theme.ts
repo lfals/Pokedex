@@ -1,4 +1,5 @@
-import image from "../assets/mimikyu.png"
+        // @ts-ignore
+        import image from "../assets/mimikyu.png"
 
 const mimikyu = {
     name: "mimikyu",

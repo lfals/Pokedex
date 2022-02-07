@@ -23,7 +23,7 @@ const colours: object = {
 
 
 const getTypeColor = (type: string) => {
-
+        // @ts-ignore
     return colours[type] || '#777'
 }
 

@@ -9,6 +9,7 @@ import { getItem } from "@helpers";
 const Header = (props:any) => {
     const [saved, setSaved] = useState(0)
     useEffect(() =>{
+        // @ts-ignore
         const oldSaved = JSON.parse(getItem('@favorites'))
         setSaved(oldSaved?.length ? oldSaved.length : 0)
     })
