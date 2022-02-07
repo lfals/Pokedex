@@ -29,7 +29,7 @@ function Home() {
         window.addEventListener('scroll', handleScroll)
       },[])
 
-    const handleScroll = (e) => {   
+    const handleScroll = (e: { target: { documentElement: { scrollTop: number; scrollHeight: number; }; }; }) => {   
         if(limit < 1282){
           if(window.innerHeight + e.target.documentElement.scrollTop + 1 >= e.target.documentElement.scrollHeight ){
             limit+= 5
@@ -38,7 +38,7 @@ function Home() {
         }   
     }
 
-    const searchPoke = (e) => {
+    const searchPoke = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       navigate(`details/${search.charAt(0).toLowerCase() + search.slice(1)}`)
     }

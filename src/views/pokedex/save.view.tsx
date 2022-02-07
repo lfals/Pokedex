@@ -19,10 +19,10 @@ function Pokedex() {
     treatData(JSON.parse(getItem("@favorites")))
   },[])
 
-  const treatData = (favorites) => {
-    const newData = []
-    favorites.map(favorite => {
-      favorite.pokemon.types.map((typeArray) => {
+  const treatData = (favorites: any[]) => {
+    const newData: ((prevState: { subject: string; A: number; }[]) => { subject: string; A: number; }[]) | { A: number; }[] = []
+    favorites.map((favorite: { pokemon: { types: any[]; }; }) => {
+      favorite.pokemon.types.map((typeArray: { type: { name: any; }; }) => {
         if(newData.findIndex(findData => findData.subject == typeArray.type.name) == -1){
           newData.push({subject: typeArray.type.name, A: 1})
         }else{

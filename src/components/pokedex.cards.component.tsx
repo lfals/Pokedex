@@ -40,7 +40,7 @@ function PokedexCard(props:any) {
                   <img  src={pokemon.pokemon.sprites.front_default} />
                   <h1>{pokemon.pokemon.name}</h1>
                   {
-                    pokemon.pokemon.types.map((type, i) => {
+                    pokemon.pokemon.types.map((type: {type: {name: string}}, i: number) => {
                       return(
                         <TypeName key={i} style={{backgroundColor: getTypeColor(type.type.name)}}>{type.type.name}</TypeName>
                       )
